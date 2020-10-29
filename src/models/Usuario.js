@@ -30,4 +30,9 @@ const UsuarioSchema = mongoose.Schema({
     }
 });
 
+UsuarioSchema.method('toJSON', function () {
+    const { password, ...object } = this.toObject();
+    return object;
+});
+
 module.exports = mongoose.model('Usuario', UsuarioSchema);
